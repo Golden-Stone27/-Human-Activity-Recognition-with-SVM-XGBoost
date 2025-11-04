@@ -23,6 +23,7 @@ The data is preprocessed, cleaned, and transformed into statistical features bef
 
 ---
 
+'''python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -33,6 +34,8 @@ import warnings
 warnings.filterwarnings('ignore')
 
 df = pd.read_csv("time_series_data_human_activities.csv", header=None)
+
+---
 
 2. Dataset Overview and Initial Inspection
 
