@@ -128,3 +128,9 @@ Both SVM and XGBoost models achieved high accuracy, proving the potential of the
     Add real-time prediction support.
 
     Include additional sensor types such as gyroscope and magnetometer.
+
+
+📚 Dataset Source & Citation
+
+This project uses the WISDM v1.1 Activity Prediction Dataset, released by the Wireless Sensor Data Mining (WISDM) Lab.
+Dataset available at: http://www.cis.fordham.edu/wisdm/
