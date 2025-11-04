@@ -34,7 +34,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 df = pd.read_csv("time_series_data_human_activities.csv", header=None)
-
+'''
 ---
 
 2. Dataset Overview and Initial Inspection
