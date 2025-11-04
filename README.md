@@ -34,7 +34,6 @@ import warnings
 warnings.filterwarnings('ignore')
 
 df = pd.read_csv("time_series_data_human_activities.csv", header=None)
-'''
 ---
 
 2. Dataset Overview and Initial Inspection
@@ -49,11 +48,12 @@ Missing values are checked, and the class distributions across users and activit
 
 Outliers in accelerometer data are removed using the Interquartile Range (IQR) method.
 
+'''python
 Q1 = df[['x','y','z']].quantile(0.25)
 Q3 = df[['x','y','z']].quantile(0.75)
 IQR = Q3 - Q1
 df_clean_iqr = df[~((df[['x','y','z']] < (Q1 - 1.5 * IQR)) | (df[['x','y','z']] > (Q3 + 1.5 * IQR))).any(axis=1)]
-
+---
 
 5. Feature Extraction using Time Windows
 
