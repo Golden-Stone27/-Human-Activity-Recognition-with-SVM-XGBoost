@@ -23,7 +23,9 @@ The data is preprocessed, cleaned, and transformed into statistical features bef
 
 ---
 
-'''python
+## 1. Library Imports and Data Loading
+
+```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -34,74 +36,64 @@ import warnings
 warnings.filterwarnings('ignore')
 
 df = pd.read_csv("time_series_data_human_activities.csv", header=None)
-'''
-
+````
 2. Dataset Overview and Initial Inspection
 
 The structure of the dataset is explored. Column names are added, and a few sample rows are displayed.
-
 3. Missing Value Analysis and Basic Visualizations
 
 Missing values are checked, and the class distributions across users and activities are visualized.
-
 4. Outlier Detection using IQR Method
 
 Outliers in accelerometer data are removed using the Interquartile Range (IQR) method.
 
-'''python
+```python
 Q1 = df[['x','y','z']].quantile(0.25)
 Q3 = df[['x','y','z']].quantile(0.75)
 IQR = Q3 - Q1
 df_clean_iqr = df[~((df[['x','y','z']] < (Q1 - 1.5 * IQR)) | (df[['x','y','z']] > (Q3 + 1.5 * IQR))).any(axis=1)]
-'''
+
+````
 
 5. Feature Extraction using Time Windows
 
 The raw time series is divided into sliding windows, and for each window, the following features are extracted:
 
-Mean
+    Mean
 
-Standard deviation
+    Standard deviation
 
-Maximum and minimum
+    Maximum and minimum
 
-Energy (sum of squares of x, y, z)
+    Energy (sum of squares of x, y, z)
 
 6. Feature Distribution Visualization
 
 Feature distributions are visualized using seaborn.pairplot to show how activities differ in feature space.
-
 7. Data Standardization and Train-Test Split
 
 All features are standardized using StandardScaler.
 Data is then split into training and testing sets (80% / 20%).
-
 8. SVM Model Training and Evaluation
 
 An SVM classifier with an RBF kernel is trained on the standardized data.
 Accuracy and classification metrics are reported.
-
 9. SVM Confusion Matrix Visualization
 
 The confusion matrix is visualized with seaborn to observe classification performance per activity.
-
 10. Hyperparameter Optimization for SVM (GridSearchCV)
 
 Hyperparameters C and gamma are tuned using GridSearchCV with 5-fold cross-validation to maximize accuracy.
-
 11. Label Encoding for Activity Classes
 
 String activity labels (e.g., “Walking”, “Sitting”) are encoded into integers for model compatibility.
-
 12. XGBoost Model Training and Evaluation
 
 An XGBoost classifier is trained and evaluated on the encoded dataset.
 Classification report and confusion matrix are generated for comparison with SVM.
-
 13. Hyperparameter Optimization for XGBoost
 
 A grid search is performed over parameters like n_estimators, max_depth, and learning_rate to optimize the model.
-
 14. Model Performance Comparison (Accuracy & F1 Score)
 
 The performance of SVM and XGBoost is compared side-by-side using Accuracy and F1 Score metrics.
@@ -120,10 +112,19 @@ axes[1].set_ylim(0, 1)
 plt.tight_layout()
 plt.show()
 
-
-| Model   | Accuracy | F1 Score        |
-| ------- | -------- | --------------- |
-| SVM     | 0.93     | (varies by run) |
-| XGBoost | 0.93     | (varies by run) |
+Model	Accuracy	F1 Score
+SVM	0.93	(varies by run)
+XGBoost	0.93	(varies by run)
 
 Both models perform comparably, showing strong classification performance across all activity types.
+🏁 Conclusion
+
+This project demonstrates how time series data can be used to classify human activities through feature engineering and machine learning techniques.
+Both SVM and XGBoost models achieved high accuracy, proving the potential of these approaches in wearable sensor data analysis.
+🧩 Future Improvements
+
+    Experiment with deep learning models (LSTM, CNN) for sequential data.
+
+    Add real-time prediction support.
+
+    Include additional sensor types such as gyroscope and magnetometer.
