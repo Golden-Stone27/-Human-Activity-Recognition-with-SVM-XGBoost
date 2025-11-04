@@ -23,7 +23,8 @@ The data is preprocessed, cleaned, and transformed into statistical features bef
 
 ---
 
- 1. Library Imports and Data Loading
+## 1. Library Imports and Data Loading
+The required Python libraries are imported and the dataset is loaded from a CSV file.
 
 ```python
 import pandas as pd
@@ -37,6 +38,7 @@ warnings.filterwarnings('ignore')
 
 df = pd.read_csv("time_series_data_human_activities.csv", header=None)
 ````
+
 2. Dataset Overview and Initial Inspection
 
 The structure of the dataset is explored. Column names are added, and a few sample rows are displayed.
@@ -52,7 +54,6 @@ Q1 = df[['x','y','z']].quantile(0.25)
 Q3 = df[['x','y','z']].quantile(0.75)
 IQR = Q3 - Q1
 df_clean_iqr = df[~((df[['x','y','z']] < (Q1 - 1.5 * IQR)) | (df[['x','y','z']] > (Q3 + 1.5 * IQR))).any(axis=1)]
-
 ````
 
 5. Feature Extraction using Time Windows
@@ -112,25 +113,26 @@ axes[1].set_ylim(0, 1)
 plt.tight_layout()
 plt.show()
 
+🏁 Results Summary
 Model	Accuracy	F1 Score
 SVM	0.93	(varies by run)
 XGBoost	0.93	(varies by run)
 
 Both models perform comparably, showing strong classification performance across all activity types.
-🏁 Conclusion
+🧩 Technologies Used
 
-This project demonstrates how time series data can be used to classify human activities through feature engineering and machine learning techniques.
-Both SVM and XGBoost models achieved high accuracy, proving the potential of these approaches in wearable sensor data analysis.
-🧩 Future Improvements
+    Python 3.x
 
-    Experiment with deep learning models (LSTM, CNN) for sequential data.
+    pandas, numpy, seaborn, matplotlib
 
-    Add real-time prediction support.
+    scikit-learn (SVM, preprocessing, GridSearchCV)
 
-    Include additional sensor types such as gyroscope and magnetometer.
+    XGBoost
 
+🚀 Future Improvements
 
-📚 Dataset Source & Citation
+    Add real-time prediction using streaming sensor data
 
-This project uses the WISDM v1.1 Activity Prediction Dataset, released by the Wireless Sensor Data Mining (WISDM) Lab.
-Dataset available at: http://www.cis.fordham.edu/wisdm/
+    Try deep learning models like LSTM or CNN for sequence modeling
+
+    Include feature importance analysis for better interpretability
