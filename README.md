@@ -23,7 +23,7 @@ The data is preprocessed, cleaned, and transformed into statistical features bef
 
 ---
 
-## 1. Library Imports and Data Loading
+ 1. Library Imports and Data Loading
 
 ```python
 import pandas as pd
