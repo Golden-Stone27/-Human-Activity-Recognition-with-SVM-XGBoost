@@ -98,7 +98,7 @@ A grid search is performed over parameters like n_estimators, max_depth, and lea
 ## 14. Model Performance Comparison (Accuracy & F1 Score)
 
 The performance of SVM and XGBoost is compared side-by-side using Accuracy and F1 Score metrics.
-
+```python
 fig, axes = plt.subplots(2, 1, figsize=(8, 8))
 axes[0].bar(results['Model'], results['Accuracy'], color='skyblue', alpha=0.8)
 axes[0].set_title("Model Accuracy Comparison")
@@ -112,7 +112,7 @@ axes[1].set_ylim(0, 1)
 
 plt.tight_layout()
 plt.show()
-
+````
 🏁 Results Summary
 Model	Accuracy	F1 Score
 SVM	0.93	(varies by run)
