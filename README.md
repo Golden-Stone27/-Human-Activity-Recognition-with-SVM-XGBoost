@@ -23,10 +23,6 @@ The data is preprocessed, cleaned, and transformed into statistical features bef
 
 ---
 
-## 1. Library Imports and Data Loading
-The required Python libraries are imported and the dataset is loaded from a CSV file.
-
-```python
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
